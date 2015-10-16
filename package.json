@@ -1,0 +1,32 @@
+{
+  "name": "documentmanagement",
+  "version": "1.0.0",
+  "description": "First Version",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec/ --forceexit --verbose",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-oolarewaju/Document-Management-System-first-version-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-oolarewaju/Document-Management-System-first-version-/issues"
+  },
+  "homepage": "https://github.com/andela-oolarewaju/Document-Management-System-first-version-#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "jasmine-node": "^1.14.5",
+    "jsonwebtoken": "^5.4.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.1.11",
+    "supertest": "^1.1.0",
+    "validator": "^4.1.0"
+  }
+}
