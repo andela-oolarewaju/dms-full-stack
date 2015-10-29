@@ -46,7 +46,8 @@ gulp.task('annotate', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('public/app/**/*.js', ['lint', 'annotate'])
+  gulp.watch('public/app/**/*.js', ['lint', 'annotate']);
+  gulp.watch('public/app/assets/**/*.js', ['style']);
 });
 
 
@@ -68,4 +69,4 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-gulp.task('default', ['nodemon', 'watch', 'style']);
+gulp.task('default', ['watch', 'style', 'nodemon']);
