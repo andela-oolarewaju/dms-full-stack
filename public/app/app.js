@@ -23,11 +23,6 @@ angular.module("mainApp", ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate',
         templateUrl: '../app/views/editDocument.html',
         controller: 'docCtrl'
       })
-      // .state('moredetails', {
-      //   url: '/document/:id',
-      //   templateUrl: '../app/views/documentDetails.html',
-      //   controller: 'docCtrl'
-      // })
       .state('createdocument', {
         url: '/documents',
         templateUrl: '../app/views/newDocument.html',
