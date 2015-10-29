@@ -39,6 +39,6 @@ angular.module("mainApp", ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate',
         controller: 'userCtrl'
       });
 
-    // $urlRouterProvider.otherwise('/landing');
+    $urlRouterProvider.otherwise('/landing');
 
   });

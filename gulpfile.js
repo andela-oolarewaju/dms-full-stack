@@ -34,7 +34,7 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter(stylish));
 });
 
-gulp.task('annotate', function(callback) {
+gulp.task('annotate', function() {
   return gulp.src(paths.js).
   pipe(concat('index')).
   pipe(annotate()).
@@ -43,10 +43,14 @@ gulp.task('annotate', function(callback) {
     suffix: '.min.js'
   })).
   pipe(gulp.dest('./public/js'));
-  callback(null);
 });
 
-gulp.task('nodemon', ['annotate'], function() {
+gulp.task('watch', function() {
+  gulp.watch('public/app/**/*.js', ['lint', 'annotate'])
+});
+
+
+gulp.task('nodemon', function() {
   nodemon({
       script: 'server.js',
       ext: 'js'
@@ -64,4 +68,4 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-gulp.task('default', ['lint', 'style', 'annotate', 'nodemon']);
+gulp.task('default', ['nodemon', 'watch', 'style']);

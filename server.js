@@ -8,7 +8,7 @@ var appDir = path.dirname(require.main.filename);
 var bodyParser = require('body-parser');
 var config = require('./config/config');
 var mongoose = require('mongoose');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 
 mongoose.connect(config.database);
 
@@ -32,7 +32,7 @@ app.use(session({
   saveUninitialized: false,
   secret: config.secret,
   resave: false
-}))
+}));
 
 app.use(express.static(path.join(appDir + '/public')));
 

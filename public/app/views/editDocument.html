@@ -1,20 +1,39 @@
 <div ng-controller= "docCtrl" data-ng-init="getDocuments()">
-    <md-toolbar>
-    <div class="md-toolbar-tools">
-      <md-button ui-sref="createdocument" aria-label="Settings">
-        Create Document
-      </md-button>
-      <md-button ui-sref="documents" aria-label="Settings">
-        Your Documents
-      </md-button>
-      <md-button ui-sref="userprofile" aria-label="Settings">
-        Your Profile
-      </md-button>
-      <md-button class="logout" ng-click="logout()" aria-label="Settings">
-        Logout
-      </md-button>
-    </div>
-  </md-toolbar>
+  <div class="top-nav">
+    <nav class="nav-div">
+      <div class="md-toolbar-tools" layout="row">
+        <div flex="80">
+          <md-button ui-sref="createdocument" aria-label="Settings">
+            Create Document
+          </md-button>
+            <md-button ui-sref="documents" aria-label="Settings">
+              Your Documents
+            </md-button>
+        </div>
+        <div >
+          <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" class="md-icon-button account" ng-click="$mdOpenMenu($event)">
+              Your Account
+            </md-button>
+            <md-menu-content width="4" class="drop-down">
+              <md-menu-item layout="column">
+                <md-button ui-sref="userprofile">
+                    <div layout="row">
+                      <p flex>Your profile</p>
+                    </div>
+                </md-button>
+                <md-button ng-click="logout()">
+                    <div layout="row">
+                      <p flex>Logout</p>
+                    </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </div>
+     </nav>
+  </div>
   <md-content class="md-padding">
 	  	<md-card id="createDoc">
 	  	  <h4 class="md-display-2" id="headerText"><strong>Update Document</strong></h4>
