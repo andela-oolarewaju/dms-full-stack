@@ -1,0 +1,20 @@
+{
+    "globalstrict"  : true,   
+    "globals"       : {
+      "angular" : false,
+      "describe" : false,
+      "inject" : false,
+      "it" : false,
+      "expect" : false,
+      "$window" : false,
+      "$" : false,
+      "window" : false,
+      "localStorage" : false,
+      "google" : false,
+      "document" : false,
+      "FileReader" : false,
+      "$location" : false,
+      "beforeEach" : false,
+      "module" : false
+    }   
+}
