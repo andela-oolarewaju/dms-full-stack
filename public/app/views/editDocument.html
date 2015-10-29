@@ -1,0 +1,41 @@
+<div ng-controller= "docCtrl" data-ng-init="getDocuments()">
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ui-sref="createdocument" aria-label="Settings">
+        Create Document
+      </md-button>
+      <md-button ui-sref="documents" aria-label="Settings">
+        Your Documents
+      </md-button>
+      <md-button ui-sref="userprofile" aria-label="Settings">
+        Your Profile
+      </md-button>
+      <md-button class="logout" ng-click="logout()" aria-label="Settings">
+        Logout
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content class="md-padding">
+	  	<md-card id="createDoc">
+	  	  <h4 class="md-display-2" id="headerText"><strong>Update Document</strong></h4>
+		  	<form ng-submit="updateDocument(doc)">
+		      <div layout="column" id="docDetails">
+		        <div >
+					    <label><strong>Document Title</strong></label><br><br>
+					    <input id="input" ng-model="doc.title" placeholder= "{{userDoc.title}}" type="text"><br>
+					  </div>
+					  <div id="textArea">
+					    <label><strong>Document Content</strong></label><br><br>
+					    <textarea rows="10" cols="50" ng-model="doc.content" placholder = "{{userDoc.content}}" class="input-textbox"></textarea>
+					  </div>
+						<md-button id="createtooltip" type="submit" ng-click="updateDocument(doc, doc._id)"class="md-fab left" aria-label="Save Document">
+					    <i class="fa fa-floppy-o"></i>
+					    <md-tooltip md-visible="demo.showTooltip">
+					      Save Document
+					    </md-tooltip>
+					  </md-button>
+					</div>
+		  </form>
+	  </md-card>
+	</md-content>
+</div>

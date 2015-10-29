@@ -1,7 +1,8 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
-var user = require('../controllers/user.controller');
+var UserController = require('../controllers/user.controller');
+var user = new UserController();
 
 module.exports = function(app) {
   //define routes with functions
@@ -15,8 +16,11 @@ module.exports = function(app) {
     .get(user.getUsers)
     .post(user.createUser);
 
+  router.route('/decode')
+    .get(user.verifyToken, user.decodeUser);
+
   router.route('/user/:id')
-    .get(user.getCurrentUser)
+    .get(user.verifyToken, user.getCurrentUser)
     .put(user.verifyToken, user.updateUser)
     .delete(user.verifyToken, user.deleteUser);
 

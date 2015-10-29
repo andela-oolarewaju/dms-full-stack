@@ -1,0 +1,182 @@
+body {
+  background-color: #000 !important;
+}
+
+.body-scroll {
+    float: left;
+    overflow: scroll;
+    min-height: 57px;
+    height: 100%;
+}
+.background-image {
+  background-image: url('../public/assets/img/Document-management_banner.jpg');
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .content {
+    width: 96%;
+    margin: 0 2%;
+    left: 0;
+    height: 70%;
+  }
+
+  #title {
+    padding: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 601px){
+  .content {
+    width: 60%;
+    height: 60%;
+    margin: 0 auto;
+    left: 20%;
+    height: 60%;
+  }
+
+  #title {
+    padding: 0 10px;
+    margin: 6% 0 0 0;
+    left: 20%;
+    width: 60%;
+  }
+
+  #right {
+    margin-left: 50%;
+  }
+}
+
+
+
+.content {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  top: 30%;
+  position: fixed;
+  right: 20%;
+  z-index: 2;
+  padding: 0 10px;
+  overflow: scroll;
+  text-align: center;
+  background-color: #f4f4f4
+}
+
+.layout-column .fa {
+  text-align: left;
+}
+
+.login-form {
+   width: 400px;
+   margin: 20px auto;
+}
+
+#createDoc {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding-left: 2em;
+}
+
+#signup {
+	width: 90%;
+
+}
+
+#profForm {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 40%;
+}
+
+#title {
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-iteration-count: infinite;
+  font-family: Lucida Console, Monaco, monospace;
+  color: #fff;
+  top: 5%;
+  position: fixed;
+  z-index: 2;
+  font-size: 40px;
+  text-align: center;
+}
+
+.top-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #3F51B5;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+#card {
+	margin-bottom: 5%;
+  height: 25em;
+  width: 20em;
+  margin-right: 10%;
+  text-align: center;
+  float: left;
+}
+
+#docName {
+	background-color: #3F51B5;
+	font-family: 'Slabo 27px', serif;
+	color: white;
+}
+
+#tooltip {
+	margin-top: 10em;
+}
+
+#createtooltip {
+	margin-top: 1em;
+}
+
+
+#input {
+	width: 30%;
+	height: 5%;
+	border: 2px solid #bebebe !important;
+  border-radius: 5px !important;
+}
+
+#textArea {
+	margin-top: 1em;
+	width: 300%;
+}
+
+.input-textbox {
+  border: 2px solid #bebebe !important;
+  border-radius: 5px !important;
+}
+
+.md-whiteframe-7dp{
+	background-color: #3A4EE3;
+	height: 100%;
+}
+
+#headerText {
+	font-family: 'Slabo 27px', serif;
+}
+
+#repeat {
+  overflow: hidden;
+}

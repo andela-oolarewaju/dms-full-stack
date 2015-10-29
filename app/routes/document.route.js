@@ -1,19 +1,21 @@
 "use strict";
 var express = require('express');
 var router = express.Router();
-var document = require('../controllers/document.controller');
-var user = require('../controllers/user.controller');
+var DocumentController = require('../controllers/document.controller');
+var UserController = require('../controllers/user.controller');
+var doc = new DocumentController();
+var user = new UserController();
 
 module.exports = function(app) {
   //define routes with functions
   router.route('/documents')
-    .get(document.getAllDocuments)
-    .post(user.verifyToken, document.createDocument);
+    .get(doc.getAllDocuments)
+    .post(user.verifyToken, doc.createDocument);
 
   router.route('/document/:id')
-    .get(document.getCurrentDocument)
-    .put(document.editDocument)
-    .delete(document.deleteDocument);
+    .get(doc.getCurrentDocument)
+    .put(user.verifyToken, doc.editDocument)
+    .delete(doc.deleteDocument);
 
   app.use('/api', router);
 };

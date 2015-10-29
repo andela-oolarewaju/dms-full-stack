@@ -8,7 +8,9 @@ var jwt = require('jsonwebtoken');
 var config = require('../../config/config');
 var session = ('express-session');
 
-exports.verifyToken = function(req, res, next) {
+var UserController = function() {}
+
+UserController.prototype.verifyToken = function(req, res, next) {
   //check for token in one of these
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
@@ -33,7 +35,11 @@ exports.verifyToken = function(req, res, next) {
   }
 };
 
-exports.authenticate = function(req, res) {
+UserController.prototype.decodeUser = function(req, res) {
+  return res.json(req.decoded);
+};
+
+UserController.prototype.authenticate = function(req, res) {
   //find user
   User.findOne({
     username: req.body.username
@@ -71,7 +77,7 @@ exports.authenticate = function(req, res) {
   });
 };
 
-exports.createUser = function(req, res) {
+UserController.prototype.createUser = function(req, res) {
   User.findOne({
     username: req.body.username
   }, function(err, user) {
@@ -94,7 +100,7 @@ exports.createUser = function(req, res) {
   });
 };
 //get all users
-exports.getUsers = function(req, res) {
+UserController.prototype.getUsers = function(req, res) {
   User.find(function(err, users) {
     if (err) {
       return res.json(err);
@@ -109,7 +115,7 @@ exports.getUsers = function(req, res) {
   });
 };
 //get current user
-exports.getCurrentUser = function(req, res) {
+UserController.prototype.getCurrentUser = function(req, res) {
   User.find({
     _id: req.params.id
   }, function(err, user) {
@@ -120,32 +126,49 @@ exports.getCurrentUser = function(req, res) {
   });
 };
 //update a user by ID
-exports.updateUser = function(req, res) {
-  User.update({
+UserController.prototype.updateUser = function(req, res) {
+  var userObj = req.body;
+  var userId = userObj._id;
+
+  User.find({
     _id: req.params.id
-  }, req.body, function(err, user) {
+  }, function(err, user) {
     if (err) {
-      return res.json(err);
+      return err
+    } 
+    else if(!user){
+      console.log("not here")
     }
-    return res.json(user);
+    else {
+      //update user by Id
+      User.update({
+        _id : req.params.id
+      }, userObj, function(err, users) {
+        if (err) {
+          console.log(err);
+        } else {
+          return res.json(users);
+        }
+      });
+    };
   });
 };
 //delete a user by ID
-exports.deleteUser = function(req, res) {
+UserController.prototype.deleteUser = function(req, res) {
   User.remove({
     _id: req.params.id
   }, function(err, user) {
     if (err) {
       return res.json(err);
     }
-    res.json({
+    return res.json({
       success: true,
       message: 'user has been deleted'
     });
   });
 };
 //logout a user, destroy session
-exports.logout = function(req, res) {
+UserController.prototype.logout = function(req, res) {
   req.session.destroy(function(err, success) {
     if (err) {
       res.send(err)
@@ -158,7 +181,7 @@ exports.logout = function(req, res) {
   });
 }
 //find documents by user
-exports.findUserDocuments = function(req, res) {
+UserController.prototype.findUserDocuments = function(req, res) {
   Document.find({
     ownerId: req.params.id
   }).exec(function(err, docs) {
@@ -168,3 +191,4 @@ exports.findUserDocuments = function(req, res) {
     return res.json(docs);
   });
 };
+module.exports = UserController;

@@ -1,0 +1,30 @@
+<div ng-controller= "homeCtrl">
+  <div class="background-image"></div>
+  <h2 class="animated infinite bounce" id="title" layout="row" layout-sm="column"layout-align="center center" >Document Management System</h2>
+  <div class="content" layout-sm="column" layout-gt-sm="column" layout wrap>
+    <h1>Log in</h1>
+     <span layout="row" layout-sm="column"layout-align="center center">Don't have an account?&nbsp;<a ui-sref="signup">Sign Up</a></span>
+     <div class="login-form">
+      <form name="loginForm">
+        <div layout="column">
+          <div layout="row" layout-sm="column">
+            <i class="fa fa-user"></i>
+            <md-input-container md-no-float class="md-primary" id="signup">
+              <input ng-model="userInfo.username" type="text" placeholder="Username" required>
+            </md-input-container>
+          </div>
+	        <div layout="row" layout-sm="column">
+            <i class="fa fa-key"></i>
+            <md-input-container md-no-float id="signup">
+              <input ng-model="userInfo.password" type="password" placeholder="Password" ng-minlength="6" ng-maxlength="20" required>
+            </md-input-container>
+          </div>
+	        <div layout="row" layout-sm="column" layout-align="center center">
+	          <md-button ng-click="loginUser(userInfo)" class="md-raised" id="loginButton">Log In</md-button>
+	        </div>
+	        <md-progress-linear md-mode="indeterminate" ng-show="progressLoad"></md-progress-linear>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>

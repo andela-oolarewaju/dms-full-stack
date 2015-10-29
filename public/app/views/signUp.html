@@ -1,0 +1,56 @@
+<div ng-controller= "homeCtrl">
+  <div class="background-image"></div>
+  <h2 class="animated infinite bounce" id="title" layout="row" layout-sm="column"layout-align="center center">Document Management System</h2>
+  <div class="content" layout-sm="column" layout-gt-sm="column" layout wrap>
+    <div class="body-scroll">
+      <h1>Sign Up</h1>
+      <span layout="row" layout-sm="column"layout-align="center center">Already have an account?&nbsp;<a ui-sref="landingpage">Log in</a></span>
+      <div class="login-form">
+        <form name="signupForm">
+          <div layout="column">
+            <div layout="row">
+              <i class="fa fa-user"></i>
+              <md-input-container md-no-float class="md-primary" id="signup">
+                <input ng-model="newUser.username" required name="username" type="text" placeholder="Username" required>
+                <div ng-messages="signupForm.username.$error">
+                  <div ng-message="required">lowercase only</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <i class="fa fa-user"></i>
+              <md-input-container md-no-float id="signup">
+                <input ng-model="newUser.name.first" type="text" placeholder="First Name" required>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <i class="fa fa-user"></i>
+              <md-input-container md-no-float id="signup">
+                <input ng-model="newUser.name.last" type="text" placeholder="Last Name" required>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <i class="fa fa-envelope"></i>
+              <md-input-container md-no-float id="signup">
+                <input ng-model="newUser.email" type="text" placeholder="Email" required>
+              </md-input-container>
+            </div>
+             <div layout="row">
+              <i class="fa fa-key"></i>
+              <md-input-container md-no-float id="signup">
+                <input ng-model="newUser.password" required name="password" type="password" placeholder="Password" minlength="6" maxlength="20">
+                <div ng-messages="signupForm.password.$error">
+                  <div ng-message="required">Enter a minimun of 6 characters</div>
+                </div>
+              </md-input-container>
+            </div>
+            <section layout="row" layout-sm="column" layout-align="center center">
+               <md-button ng-click="signupUser(newUser)" flex="50" class="md-raised">Sign up</md-button>
+            </section>
+            <md-progress-linear md-mode="indeterminate" ng-show="progressLoad"></md-progress-linear>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

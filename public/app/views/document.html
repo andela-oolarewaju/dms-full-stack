@@ -1,0 +1,67 @@
+<div ng-controller= "docCtrl" data-ng-init="getDocuments()">
+  <div class="top-nav">
+    <nav class="nav-div">
+	    <div class="md-toolbar-tools">
+	      <md-button ui-sref="createdocument" aria-label="Settings">
+	        Create Document
+	      </md-button>
+	      <md-button ui-sref="documents" aria-label="Settings">
+	        Your Documents
+	      </md-button>
+	      <md-menu md-position-mode="target-right target" >
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)" flex-offset="33">
+            Account
+          </md-button>
+          <md-menu-content width="4" >
+            <md-menu-item layout="column">
+              <md-button ui-sref="userprofile">
+                  <div layout="row">
+                    <p flex>Your profile</p>
+                    <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
+                  </div>
+              </md-button>
+              <md-button ng-click="logout()">
+                  <div layout="row">
+                    <p flex>Logout</p>
+                    <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+	    </div>
+	   </nav>
+  </div>
+  <md-content class="md-padding">
+    <h4 class="md-display-2" id="headerText"><strong>View Documents</strong></h4>
+    <div layout="row" layout-sm="column"  layout-fill layout-align="top center" layout-wrap>
+			<div ng-repeat="userDoc in userDocs">
+				<md-card id="card">
+				  <md-card-content>
+			      <div id="docName"><h2><p><strong>{{userDoc.title | uppercase}}</strong></p></h2></div>
+			      <p>{{userDoc.content}}</p>
+            <div id="tooltip">
+              <div><p>{{userDoc.dateCreated | date:'medium' | uppercase}}</p></div>
+	            <md-button class="md-fab left" aria-label="Edit Document" ng-click="getCurrentDocument(userDoc)">
+					      <i class="fa fa-pencil-square-o"></i>
+					      <md-tooltip md-visible="demo.showTooltip">
+					        Edit Document
+					      </md-tooltip>
+					    </md-button>
+					    <md-button class="md-fab left" aria-label="Delete Document" ng-click="showConfirm($event, userDoc._id)">
+					      <i class="fa fa-trash-o"></i>
+					      <md-tooltip md-visible="demo.showTooltip">
+					        Delete Document
+					      </md-tooltip>
+					    </md-button>
+					  </div>
+				  </md-card-content>
+				</md-card>
+			</div>
+    </div>
+    <div ng-if="!userDocs.length" layout-align="center">
+		    <h2>You have not created any documents yet!</h2>
+		    <span ui-sref="createdocument">Click <strong>here</strong> to create your first Document!</span>
+		  </div>
+  </md-content>
+</div>

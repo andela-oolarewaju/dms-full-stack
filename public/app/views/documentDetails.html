@@ -1,0 +1,39 @@
+<div ng-controller= "docCtrl" data-ng-init="getDocuments()">
+  <nav id="nav-bar">
+    <div class="md-toolbar-tools">
+      <md-button ui-sref="createdocument" aria-label="Settings">
+        Create Document
+      </md-button>
+      <md-button ui-sref="documents" aria-label="Settings">
+        Your Documents
+      </md-button>
+      <md-button ui-sref="userprofile" aria-label="Settings">
+        Your Profile
+      </md-button>
+      <md-button class="logout" ng-click="logout()" aria-label="Settings">
+        Logout
+      </md-button>
+    </div>
+  </nav>
+  <md-content class="md-padding">
+    <md-card id="createDoc">
+      <h4 class="md-display-2" id="headerText"><strong>Document details</strong></h4>
+      <div layout="column" id="docDetails">
+        <div >
+          <label><strong>Document Title</strong></label><br><br>
+          <span>{{userDocs.title}}</span><br>
+        </div>
+        <div>
+          <label><strong>Document Content</strong></label><br><br>
+          <span>{{userDocs.content}}</span>
+        </div>
+        <md-button class="md-fab left" aria-label="Edit Document" ng-click="getCurrentDocument(userDoc)">
+          <i class="fa fa-pencil-square-o"></i>
+          <md-tooltip md-visible="demo.showTooltip">
+            Edit Document
+          </md-tooltip>
+        </md-button>
+      </div>
+    </md-card>
+  </md-content>
+</div>
