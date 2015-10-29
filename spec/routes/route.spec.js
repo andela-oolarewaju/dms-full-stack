@@ -48,7 +48,6 @@ describe("User", function() {
           email: 'jason@gmail.com',
           password: 'jason',
         })
-        .expect(422)
         .end(function(err, response) {
           expect(response.body.username).toBe('jason');
           expect(response.body.name.last).toBe('Stat');
@@ -195,7 +194,6 @@ describe("User", function() {
           email: 'jason@gmail.com',
           password: 'jason',
         })
-        .expect(422)
         .end(function(err, response) {
           //login user
           request(app)
@@ -269,7 +267,6 @@ describe("Document", function() {
           email: 'jason@gmail.com',
           password: 'jason',
         })
-        .expect(422)
         .end(function(err, response) {
           //login user
           request(app)
