@@ -110,7 +110,7 @@ describe("Document Manager System ", function() {
     it("should delete a user", function() {
       var token = localStorage.getItem("userToken");
       var userData = {
-        _id : 2,
+        _id: 2,
         username: "naruto",
         name: {
           first: "tails",
@@ -140,14 +140,16 @@ describe("Document Manager System ", function() {
       httpMock = _$httpBackend_;
     }));
 
-   
+
 
     it("should create a document", function() {
-      httpMock.whenGET(/\.html$/).respond({success : true});
+      httpMock.whenGET(/\.html$/).respond({
+        success: true
+      });
       var token = localStorage.getItem("userToken");
       var docInfo = {
         ownerId: 2,
-        title: "naruto", 
+        title: "naruto",
         content: "shipuden manga 247"
       };
       httpMock.expectPOST("/api/documents?token=" + token, docInfo).respond({});
@@ -158,7 +160,9 @@ describe("Document Manager System ", function() {
     });
 
     it("should update a document", function() {
-      httpMock.whenGET(/\.html$/).respond({success : true});
+      httpMock.whenGET(/\.html$/).respond({
+        success: true
+      });
       var token = localStorage.getItem("userToken");
       var docData = {
         _id: 3,

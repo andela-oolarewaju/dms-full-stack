@@ -65,7 +65,7 @@ describe("Services", function() {
 
     it("should update a user", function(done) {
       var token = localStorage.getItem("userToken");
-      var updatedUser = null
+      var updatedUser = null;
       httpMock.expectPUT('/api/user/2?token=' + token).respond({
         updatedUser: {
           username: "choji",
@@ -129,7 +129,7 @@ describe("Services", function() {
       var userInfo = {
         username: "choji",
         password: "naruto"
-      }
+      };
       httpMock.expectPOST('/api/user/login').respond({
         message: "Login successful"
       });
@@ -144,13 +144,12 @@ describe("Services", function() {
 
 
     it("should get a users documents", function(done) {
-      var token = localStorage.getItem("userToken");
       httpMock.expectGET('/api/user/2/documents').respond({
-        message : "user documents found"
+        message: "user documents found"
       });
       UserService.getUserDocuments(2).then(function(res) {
         expect(res.data).toEqual({
-         message : "user documents found" 
+          message: "user documents found"
         });
         done();
       });
@@ -159,9 +158,9 @@ describe("Services", function() {
 
   });
 
-	describe("DocumentService", function() {
-		it("should get documents", function(done) {
-			httpMock.expectGET('/api/documents').respond({
+  describe("DocumentService", function() {
+    it("should get documents", function(done) {
+      httpMock.expectGET('/api/documents').respond({
         ownerId: 2,
         title: "The one and only",
         content: "The first person to ever think that I could be something"
@@ -171,27 +170,27 @@ describe("Services", function() {
         done();
       });
       httpMock.flush();
-		});
+    });
 
-		it("should create documents", function(done) {
-			var newDoc = null;
-			var token = localStorage.getItem("userToken");
-			httpMock.expectPOST('/api/documents?token=' + token).respond({
-				newDoc : {
-	        ownerId: 2,
-	        title: "The one and only",
-	        content: "The first person to ever think that I could be something"
-	      }
+    it("should create documents", function(done) {
+      var newDoc = null;
+      var token = localStorage.getItem("userToken");
+      httpMock.expectPOST('/api/documents?token=' + token).respond({
+        newDoc: {
+          ownerId: 2,
+          title: "The one and only",
+          content: "The first person to ever think that I could be something"
+        }
       });
       DocumentService.createDocument(newDoc).then(function(doc) {
         expect(doc.data.newDoc.title).toEqual("The one and only");
         done();
       });
       httpMock.flush();
-		});
+    });
 
-		it("should get a document", function(done) {
-			httpMock.expectGET('/api/document/2').respond({
+    it("should get a document", function(done) {
+      httpMock.expectGET('/api/document/2').respond({
         ownerId: 2,
         title: "The one and only",
         content: "The first person to ever think that I could be something"
@@ -201,38 +200,40 @@ describe("Services", function() {
         done();
       });
       httpMock.flush();
-		});
+    });
 
-		it("should update a document", function(done) {
-			var token = localStorage.getItem("userToken");
-			var updatedDoc = null;
-			httpMock.expectPUT('/api/document/2?token=' + token).respond({
-				updatedDoc : {
-	        ownerId: 2,
-	        title: "The one and only",
-	        content: "The first person to ever think that I could be something"
-	      }
+    it("should update a document", function(done) {
+      var token = localStorage.getItem("userToken");
+      var updatedDoc = null;
+      httpMock.expectPUT('/api/document/2?token=' + token).respond({
+        updatedDoc: {
+          ownerId: 2,
+          title: "The one and only",
+          content: "The first person to ever think that I could be something"
+        }
       });
       DocumentService.updateDocument(updatedDoc, 2).then(function(doc) {
         expect(doc.data.updatedDoc).toEqual({
-        	ownerId: 2,
-	        title: "The one and only",
-	        content: "The first person to ever think that I could be something"
+          ownerId: 2,
+          title: "The one and only",
+          content: "The first person to ever think that I could be something"
         });
         done();
       });
       httpMock.flush();
-		});
+    });
 
-		it("should delete a document", function(done) {
-			httpMock.expectDELETE('/api/document/2').respond({
-        message : "document has been deleted"
+    it("should delete a document", function(done) {
+      httpMock.expectDELETE('/api/document/2').respond({
+        message: "document has been deleted"
       });
       DocumentService.deleteDocument(2).then(function(doc) {
-        expect(doc.data).toEqual({message : "document has been deleted"});
+        expect(doc.data).toEqual({
+          message: "document has been deleted"
+        });
         done();
       });
       httpMock.flush();
-		});
-	})
+    });
+  });
 });
