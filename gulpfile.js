@@ -46,7 +46,7 @@ gulp.task('annotate', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('public/app/**/*.js', ['lint', 'annotate']);
+  gulp.watch('public/libs/**/*.js', ['lint', 'annotate']);
   gulp.watch('public/app/assets/**/*.js', ['style']);
 });
 
