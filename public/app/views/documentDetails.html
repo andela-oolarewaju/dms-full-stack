@@ -3,10 +3,13 @@
     <span class="md-display-2" id="headerText"><strong>Document details</strong></span>
     <div layout="column" id="docDetails">
       <div >
-        <span><strong>{{doc.title | uppercase}}</strong></span>
+        <span><h2>{{doc.title | uppercase}}</h2></span>
       </div>
       <div style="margin-bottom: 1em">
-        <p><strong>{{doc.content}}</strong></p>
+        <p><h3>{{doc.content}}</h3></p>
+      </div>
+      <div style="margin-bottom: 1em">
+        <p><strong>Created on: {{doc.dateCreated | date:'medium'}}</strong></p>
       </div>
       <div layout= "row">
         <md-button class="md-fab left" aria-label="Edit Document" ng-click="getCurrentDocument(doc)">
