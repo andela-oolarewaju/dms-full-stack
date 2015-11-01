@@ -22,6 +22,10 @@ body {
   opacity: 0.5;
 }
 
+.doc-content {
+  height: 650px;
+}
+
 @media (max-width: 600px) {
   .content {
     width: 96%;
@@ -106,6 +110,10 @@ body {
 
 }
 
+.new-doc-content {
+  width: 100%;
+}
+
 #profForm {
   padding-top: 30px;
   padding-left: 30px;
@@ -160,20 +168,24 @@ body {
 
 
 #input {
-	width: 70%;
+	width: 60%;
 	height: 5%;
 	border: 2px solid #bebebe !important;
   border-radius: 5px !important;
 }
 
-#textArea {
-	margin-top: 1em;
-	width: 300%;
+#title-input {
+  width: 30%;
+  height: 5%;
+  border: 2px solid #bebebe !important;
+  border-radius: 5px !important;
 }
 
 .input-textbox {
+  margin-top: 1em;
   border: 2px solid #bebebe !important;
   border-radius: 5px !important;
+  width: 70%;
 }
 
 .md-whiteframe-7dp{
@@ -183,6 +195,8 @@ body {
 
 #headerText {
 	font-family: 'Slabo 27px', serif;
+  font-size: 35px;
+  margin-bottom: 1em;
 }
 
 #repeat {

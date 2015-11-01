@@ -45,16 +45,14 @@ gulp.task('annotate', function() {
   pipe(gulp.dest('./public/js'));
 });
 
-gulp.task('watch', function() {
-  gulp.watch('public/libs/**/*.js', ['lint', 'annotate']);
-  gulp.watch('public/app/assets/**/*.js', ['style']);
-});
+
 
 
 gulp.task('nodemon', function() {
   nodemon({
       script: 'server.js',
-      ext: 'js'
+      ext: 'js',
+      tasks: ['lint']
     })
     .on('restart', function() {
       console.log('server restarted!')
@@ -69,4 +67,4 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-gulp.task('default', ['watch', 'style', 'nodemon']);
+gulp.task('default', ['nodemon', 'lint', 'annotate', 'style',]);

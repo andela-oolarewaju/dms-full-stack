@@ -1,7 +1,7 @@
 "use strict";
 angular.module("mainApp")
   .controller("userCtrl", ["$scope", "$stateParams", "$window", "$mdDialog", "$rootScope", "$location", "UserService", function($scope, $stateParams, $window, $mdDialog, $rootScope, $location, UserService) {
-
+    //get user by id
     $scope.getUser = function(id) {
       $scope.userCount = 0;
       UserService.getCurrentUser(id).then(function(res) {
@@ -16,20 +16,20 @@ angular.module("mainApp")
       localStorage.removeItem("userToken");
       $location.url("/landing");
     };
-
+    //update user profile by id
     $scope.updateProfile = function(newDetails, id) {
       $scope.userUpdated = false;
       UserService.updateUser(newDetails, id).then(function(data) {
         if (data) {
           $scope.updatedUser = data;
           $scope.userUpdated = true;
-          $location.url("/userdocuments");
+          $location.url("/nav/userdocuments");
         } else {
           $scope.userUpdated = false;
         }
       });
     };
-
+    //delete account
     $scope.deleteAccount = function(id) {
       $scope.deleted = false;
       UserService.deleteUser(id).then(function(res) {
@@ -39,7 +39,7 @@ angular.module("mainApp")
         $location.url("/landing");
       });
     };
-
+    //confirm before deleting account
     $scope.showConfirmDelete = function(ev, id) {
       var confirm = $mdDialog.confirm()
         .title("Deactivate Account")

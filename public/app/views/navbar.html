@@ -1,0 +1,70 @@
+<div ng-controller="homeCtrl">
+  <div class="top-nav" layout="row">
+    <nav class="nav-div" layout="row">
+      <div hide show-gt-sm class="md-toolbar-tools" layout="row">
+        <div>
+          <md-button ui-sref="nav.createdocument" aria-label="Settings">
+            Create Document
+          </md-button>
+          <md-button ui-sref="nav.documents" aria-label="Settings">
+            My Documents
+          </md-button>
+        </div>
+        <div >
+          <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open demo menu" class="md-icon-button account" ng-click="$mdOpenMenu($event)">
+              My Account
+            </md-button>
+            <md-menu-content width="4" class="drop-down">
+              <md-menu-item layout="column">
+                <md-button ui-sref="nav.userprofile">
+                    <div layout="row">
+                      <p flex>Your profile</p>
+                    </div>
+                </md-button>
+                <md-button ng-click="logout()">
+                    <div layout="row">
+                      <p flex>Logout</p>
+                    </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </div>
+      <div hide-gt-sm class="md-toolbar-tools" layout="row">
+         <div >
+          <md-menu md-position-mode="target-right target">
+            <i class="fa fa-chevron-down" ng-click="$mdOpenMenu($event)">Menu</i>
+            <md-menu-content width="4" class="drop-down">
+              <md-menu-item layout="column">
+                <md-button ui-sref="nav.createdocument">
+                    <div layout="row">
+                      <p flex>New Doc</p>
+                    </div>
+                </md-button>
+                <md-button ui-sref="nav.documents">
+                    <div layout="row">
+                      <p flex>View Doc</p>
+                    </div>
+                </md-button>
+                <md-button ui-sref="nav.userprofile">
+                    <div layout="row">
+                      <p flex>Your profile</p>
+                    </div>
+                </md-button>
+                <md-button ng-click="logout()">
+                    <div layout="row">
+                      <p flex>Logout</p>
+                    </div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+  
+      </div>
+     </nav>
+  </div>
+</div>
+<div ui-view></div>

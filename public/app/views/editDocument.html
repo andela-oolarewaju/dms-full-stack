@@ -1,60 +1,31 @@
-<div ng-controller= "docCtrl" data-ng-init="getDocuments()">
-  <div class="top-nav">
-    <nav class="nav-div">
-      <div class="md-toolbar-tools" layout="row">
-        <div flex="80">
-          <md-button ui-sref="createdocument" aria-label="Settings">
-            Create Document
-          </md-button>
-            <md-button ui-sref="documents" aria-label="Settings">
-              Your Documents
+<md-content class="md-padding doc-content" ng-controller= "docCtrl" data-ng-init="showDocDetails()">
+  	<md-card id="createDoc">
+  	  <span class="md-display-2" id="headerText"><strong>Edit Document</strong></span>
+	  	<form ng-submit="updateDocument(doc)">
+	      <div layout="column" id="docDetails">
+	        <div >
+				    <label><strong>Document Title</strong></label><br><br>
+				    <input id="title-input" ng-model="doc.title" placeholder= "{{userDoc.title}}" type="text"><br>
+				  </div>
+				  <div id="textArea">
+				    <label><strong>Document Content</strong></label><br><br>
+				    <textarea rows="10" cols="50" ng-model="doc.content" placholder = "{{userDoc.content}}" class="input-textbox"></textarea>
+				  </div>
+          <div layout="row">
+  					<md-button id="createtooltip" ng-click="updateDocument(doc, doc._id)"class="md-fab left" aria-label="Save Document">
+  				    <i class="fa fa-floppy-o"></i>
+  				    <md-tooltip md-visible="demo.showTooltip">
+  				      Save Document
+  				    </md-tooltip>
+  				  </md-button>
+            <md-button class="md-fab left" id="createtooltip" aria-label="Back" ui-sref="nav.documents">
+              <i class="fa fa-arrow-left"></i>
+              <md-tooltip md-visible="demo.showTooltip">
+              Back
+              </md-tooltip>
             </md-button>
-        </div>
-        <div >
-          <md-menu md-position-mode="target-right target">
-            <md-button aria-label="Open demo menu" class="md-icon-button account" ng-click="$mdOpenMenu($event)">
-              Your Account
-            </md-button>
-            <md-menu-content width="4" class="drop-down">
-              <md-menu-item layout="column">
-                <md-button ui-sref="userprofile">
-                    <div layout="row">
-                      <p flex>Your profile</p>
-                    </div>
-                </md-button>
-                <md-button ng-click="logout()">
-                    <div layout="row">
-                      <p flex>Logout</p>
-                    </div>
-                </md-button>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-        </div>
-      </div>
-     </nav>
-  </div>
-  <md-content class="md-padding">
-	  	<md-card id="createDoc">
-	  	  <h4 class="md-display-2" id="headerText"><strong>Update Document</strong></h4>
-		  	<form ng-submit="updateDocument(doc)">
-		      <div layout="column" id="docDetails">
-		        <div >
-					    <label><strong>Document Title</strong></label><br><br>
-					    <input id="input" ng-model="doc.title" placeholder= "{{userDoc.title}}" type="text"><br>
-					  </div>
-					  <div id="textArea">
-					    <label><strong>Document Content</strong></label><br><br>
-					    <textarea rows="10" cols="50" ng-model="doc.content" placholder = "{{userDoc.content}}" class="input-textbox"></textarea>
-					  </div>
-						<md-button id="createtooltip" type="submit" ng-click="updateDocument(doc, doc._id)"class="md-fab left" aria-label="Save Document">
-					    <i class="fa fa-floppy-o"></i>
-					    <md-tooltip md-visible="demo.showTooltip">
-					      Save Document
-					    </md-tooltip>
-					  </md-button>
-					</div>
-		  </form>
-	  </md-card>
-	</md-content>
-</div>
+          </div>
+				</div>
+	  </form>
+  </md-card>
+</md-content>

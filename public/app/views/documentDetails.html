@@ -1,58 +1,27 @@
-<div ng-controller= "docCtrl" data-ng-init="getDocuments()">
-  <div class="top-nav">
-    <nav class="nav-div">
-      <div class="md-toolbar-tools" layout="row">
-        <div flex="80">
-          <md-button ui-sref="createdocument" aria-label="Settings">
-            Create Document
-          </md-button>
-            <md-button ui-sref="documents" aria-label="Settings">
-              Your Documents
-            </md-button>
-        </div>
-        <div >
-          <md-menu md-position-mode="target-right target">
-            <md-button aria-label="Open demo menu" class="md-icon-button account" ng-click="$mdOpenMenu($event)">
-              Your Account
-            </md-button>
-            <md-menu-content width="4" class="drop-down">
-              <md-menu-item layout="column">
-                <md-button ui-sref="userprofile">
-                    <div layout="row">
-                      <p flex>Your profile</p>
-                    </div>
-                </md-button>
-                <md-button ng-click="logout()">
-                    <div layout="row">
-                      <p flex>Logout</p>
-                    </div>
-                </md-button>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-        </div>
+<md-content class="md-padding doc-content" ng-controller="docCtrl" data-ng-init="showDocDetails()">
+  <md-card id="createDoc">
+    <span class="md-display-2" id="headerText"><strong>Document details</strong></span>
+    <div layout="column" id="docDetails">
+      <div >
+        <span><strong>{{doc.title | uppercase}}</strong></span>
       </div>
-     </nav>
-  </div>
-  <md-content class="md-padding">
-    <md-card id="createDoc">
-      <h4 class="md-display-2" id="headerText"><strong>Document details</strong></h4>
-      <div layout="column" id="docDetails">
-        <div >
-          <label><strong>Document Title</strong></label><br><br>
-          <span>{{userDocs.title}}</span><br>
-        </div>
-        <div>
-          <label><strong>Document Content</strong></label><br><br>
-          <span>{{userDocs.content}}</span>
-        </div>
-        <md-button class="md-fab left" aria-label="Edit Document" ng-click="getCurrentDocument(userDoc)">
+      <div style="margin-bottom: 1em">
+        <p><strong>{{doc.content}}</strong></p>
+      </div>
+      <div layout= "row">
+        <md-button class="md-fab left" aria-label="Edit Document" ng-click="getCurrentDocument(doc)">
           <i class="fa fa-pencil-square-o"></i>
           <md-tooltip md-visible="demo.showTooltip">
             Edit Document
           </md-tooltip>
         </md-button>
+        <md-button class="md-fab left" aria-label="Back" ui-sref="nav.documents">
+          <i class="fa fa-arrow-left"></i>
+          <md-tooltip md-visible="demo.showTooltip">
+            Back
+          </md-tooltip>
+        </md-button>
       </div>
-    </md-card>
-  </md-content>
-</div>
+    </div>
+  </md-card>
+</md-content>

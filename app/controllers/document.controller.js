@@ -18,7 +18,7 @@ DocumentController.prototype.createDocument = function(req, res) {
         message: 'document already exists'
       });
     } else {
-      var userId = req.decoded._id
+      var userId = req.decoded._id;
       var docObj = req.body;
       docObj.ownerId = userId
         //create document

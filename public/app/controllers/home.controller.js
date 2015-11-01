@@ -1,7 +1,7 @@
 "use strict";
 angular.module("mainApp")
   .controller("homeCtrl", ["$scope", "$location", "$mdToast", "$stateParams", "DocumentService", "UserService", function($scope, $location, $mdToast, $stateParams, DocumentService, UserService) {
-
+    //login a user
     $scope.loginUser = function(userData) {
       UserService.login(userData).then(function(res) {
         $scope.progressLoad = true;
@@ -23,6 +23,7 @@ angular.module("mainApp")
           $scope.progressLoad = false;
           $scope.isLoggedIn = false;
         } else {
+          //set token in localstorage
           localStorage.setItem("userToken", res.data.token);
           if (localStorage.getItem("userToken")) {
             $scope.userDetails = userData;
@@ -30,13 +31,13 @@ angular.module("mainApp")
             $scope.progressLoad = false;
             $scope.isLoggedIn = true;
             $scope.userInformation = res.data.user;
-            $location.url("/userdocuments");
+            $location.url("/nav/userdocuments");
 
           }
         }
       });
     };
-
+    //remove token and go to login page
     $scope.logout = function() {
       $scope.isLoggedIn = true;
       localStorage.removeItem("userToken");
@@ -47,7 +48,7 @@ angular.module("mainApp")
         $location.url("/landing");
       }
     };
-
+    //create a new user
     $scope.signupUser = function(newUser) {
       $scope.progressLoad = true;
       $scope.isNewUser = false;
@@ -74,6 +75,7 @@ angular.module("mainApp")
             .content("Welcome to DMS!")
             .hideDelay(3000)
           );
+          //sign in new user
           $scope.loginUser({
             username: newUser.username,
             password: newUser.password

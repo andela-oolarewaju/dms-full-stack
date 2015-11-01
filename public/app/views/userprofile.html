@@ -1,76 +1,39 @@
-<div ng-controller="userCtrl" data-ng-init="getUser(userId)">
-  <div class="top-nav">
-    <nav class="nav-div">
-      <div class="md-toolbar-tools" layout="row">
-        <div flex="80">
-          <md-button ui-sref="createdocument" aria-label="Settings">
-            Create Document
-          </md-button>
-            <md-button ui-sref="documents" aria-label="Settings">
-              Your Documents
+<md-content class="md-padding doc-content" ng-controller="userCtrl" data-ng-init="getUser(userId)">
+    <md-card class= "profCard">
+      <span class="md-display-2" id="headerText"><strong>{{user.username | uppercase}}'S PROFILE</strong></span>
+      <form ng-submit="updateProfile(user)">
+        <div id="profForm" layout="column">
+          <strong>Username:</strong>
+          <md-input-container md-no-float>
+            <input ng-model="user.username" type="text" placeholder="{{user.username}}">
+          </md-input-container>
+          <strong>First Name:</strong>
+          <md-input-container md-no-float>
+            <input ng-model="user.name.first" type="text" placeholder="{{user.name.first}}">
+          </md-input-container>
+          <strong>Last Name:</strong>
+          <md-input-container md-no-float>
+            <input ng-model="user.name.last" type="text" placeholder="{{user.name.last}}">
+          </md-input-container>
+          <strong>E-mail:</strong>
+          <md-input-container md-no-float>
+            <input ng-model="user.email" type="text" placeholder="{{user.email}}">
+          </md-input-container>
+          <div layout="row">
+            <md-button id="createtooltip" type="submit" ng-click="updateProfile(user, user._id)" class="md-fab left" aria-label="Save Details">
+              <i class="fa fa-floppy-o"></i>
+              <md-tooltip md-visible="demo.showTooltip">
+                Save Details
+              </md-tooltip>
             </md-button>
-        </div>
-        <div >
-          <md-menu md-position-mode="target-right target">
-            <md-button aria-label="Open demo menu" class="md-icon-button account" ng-click="$mdOpenMenu($event)">
-              Your Account
+            <md-button id="createtooltip" type="submit" ng-click="showConfirmDelete($event, user._id)" class="md-fab left" aria-label="Delete Account">
+              <i class="fa fa-trash-o"></i>
+              <md-tooltip md-visible="demo.showTooltip">
+                Delete Account
+              </md-tooltip>
             </md-button>
-            <md-menu-content width="4" class="drop-down">
-              <md-menu-item layout="column">
-                <md-button ui-sref="userprofile">
-                    <div layout="row">
-                      <p flex>Your profile</p>
-                    </div>
-                </md-button>
-                <md-button ng-click="logout()">
-                    <div layout="row">
-                      <p flex>Logout</p>
-                    </div>
-                </md-button>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
-        </div>
+          </div>
       </div>
-     </nav>
-  </div>
-  <md-content class="md-padding">
-      <md-card class= "profCard">
-        <h4 class="md-display-2" id="headerText"><strong>{{user.username | uppercase}}'S PROFILE</strong></h4>
-        <form ng-submit="updateProfile(user)">
-          <div id="profForm" layout="column">
-            <strong>Username:</strong>
-            <md-input-container md-no-float>
-              <input ng-model="user.username" type="text" placeholder="{{user.username}}">
-            </md-input-container>
-            <strong>First Name:</strong>
-            <md-input-container md-no-float>
-              <input ng-model="user.name.first" type="text" placeholder="{{user.name.first}}">
-            </md-input-container>
-            <strong>Last Name:</strong>
-            <md-input-container md-no-float>
-              <input ng-model="user.name.last" type="text" placeholder="{{user.name.last}}">
-            </md-input-container>
-            <strong>E-mail:</strong>
-            <md-input-container md-no-float>
-              <input ng-model="user.email" type="text" placeholder="{{user.email}}">
-            </md-input-container>
-            <div layout="row">
-              <md-button id="createtooltip" type="submit" ng-click="updateProfile(user, user._id)" class="md-fab left" aria-label="Save Details">
-                <i class="fa fa-floppy-o"></i>
-                <md-tooltip md-visible="demo.showTooltip">
-                  Save Details
-                </md-tooltip>
-              </md-button>
-              <md-button id="createtooltip" type="submit" ng-click="showConfirmDelete($event, user._id)" class="md-fab left" aria-label="Delete Account">
-                <i class="fa fa-trash-o"></i>
-                <md-tooltip md-visible="demo.showTooltip">
-                  Delete Account
-                </md-tooltip>
-              </md-button>
-            </div>
-        </div>
-      </form>
-    </md-card>
-  </md-content>
-</div>
+    </form>
+  </md-card>
+</md-content>
