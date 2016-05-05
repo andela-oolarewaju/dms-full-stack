@@ -22,6 +22,7 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
+    "gulp": "^3.9.1",
     "gulp-jshint": "^1.11.2",
     "jasmine-core": "^2.3.4",
     "jasmine-node": "^1.14.5",
