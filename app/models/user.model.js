@@ -1,4 +1,4 @@
-// get dependencies
+m// get dependencies
 var mongoose = require('mongoose');
 var validator = require('validator');
 var bcrypt = require('bcrypt-nodejs');
