@@ -2,12 +2,12 @@
 angular.module("mainApp")
   .controller("userCtrl", ["$scope", "$stateParams", "$window", "$mdDialog", "$rootScope", "$location", "UserService", function($scope, $stateParams, $window, $mdDialog, $rootScope, $location, UserService) {
     //get user by id
-    $scope.getUser = function(id) {
+    $scope.getUser = function() {
       $scope.userCount = 0;
-      UserService.getCurrentUser(id).then(function(res) {
+      UserService.getCurrentUser().then(function(res) {
         if (res) {
           $scope.userCount = 1;
-          $scope.user = res.data[0];
+          $scope.user = res.data;
         }
       });
     };
@@ -17,14 +17,16 @@ angular.module("mainApp")
       $location.url("/landing");
     };
     //update user profile by id
-    $scope.updateProfile = function(newDetails, id) {
+    $scope.updateProfile = function(newDetails) {
       $scope.userUpdated = false;
-      UserService.updateUser(newDetails, id).then(function(data) {
+      UserService.updateUser(newDetails).then(function(data) {
+        console.log("data", data)
         if (data) {
           $scope.updatedUser = data;
           $scope.userUpdated = true;
           $location.url("/nav/userdocuments");
         } else {
+          console.log("error");
           $scope.userUpdated = false;
         }
       });

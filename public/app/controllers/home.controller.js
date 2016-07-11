@@ -32,7 +32,6 @@ angular.module("mainApp")
             $scope.isLoggedIn = true;
             $scope.userInformation = res.data.user;
             $location.url("/nav/userdocuments");
-
           }
         }
       });

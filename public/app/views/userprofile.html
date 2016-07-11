@@ -1,4 +1,4 @@
-<md-content class="md-padding doc-content" ng-controller="userCtrl" data-ng-init="getUser(userId)">
+<md-content class="md-padding doc-content" ng-controller="userCtrl" data-ng-init="getUser()">
     <md-card class= "profCard">
       <span class="md-display-2" id="headerText"><strong>{{user.username | uppercase}}'S PROFILE</strong></span>
       <form ng-submit="updateProfile(user)">
@@ -20,7 +20,7 @@
             <input ng-model="user.email" type="text" placeholder="{{user.email}}">
           </md-input-container>
           <div layout="row">
-            <md-button id="createtooltip" type="submit" ng-click="updateProfile(user, user._id)" class="md-fab left" aria-label="Save Details">
+            <md-button id="createtooltip" type="submit" ng-click="updateProfile(user)" class="md-fab left" aria-label="Save Details">
               <i class="fa fa-floppy-o"></i>
               <md-tooltip md-visible="demo.showTooltip">
                 Save Details

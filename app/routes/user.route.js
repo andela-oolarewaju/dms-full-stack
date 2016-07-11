@@ -19,13 +19,13 @@ module.exports = function(app) {
   router.route('/decode')
     .get(user.verifyToken, user.decodeUser);
 
-  router.route('/user/:id')
+  router.route('/useroflife')
     .get(user.verifyToken, user.getCurrentUser)
     .put(user.verifyToken, user.updateUser)
     .delete(user.verifyToken, user.deleteUser);
 
-  router.route('/user/:id/documents')
-    .get(user.findUserDocuments)
+  router.route('/user/:userId/documents')
+    .get(user.getUserFromToken, user.findUserDocuments)
 
   app.use('/api', router);
 };

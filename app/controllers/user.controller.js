@@ -116,47 +116,42 @@ UserController.prototype.getUsers = function(req, res) {
 };
 //get current user
 UserController.prototype.getCurrentUser = function(req, res) {
-  User.find({
-    _id: req.params.id
-  }, function(err, user) {
+  var id = req.decoded._doc._id;
+  User.findById(id, function(err, user){
     if (err) {
+      console.log("err", err); 
       return res.json(err);
     }
     return res.json(user);
-  });
+  })
 };
 //update a user by ID
 UserController.prototype.updateUser = function(req, res) {
   var userObj = req.body;
   var userId = userObj._id;
 
-  User.find({
-    _id: req.params.id
+  User.findByIdAndUpdate({
+    _id: req.body._id
+  }, req.body, {
+    new: true
   }, function(err, user) {
     if (err) {
-      return err
-    } 
-    else if(!user){
-      console.log("not here")
+      return res.json(err);
     }
-    else {
-      //update user by Id
-      User.update({
-        _id : req.params.id
-      }, userObj, function(err, users) {
-        if (err) {
-          console.log(err);
-        } else {
-          return res.json(users);
-        }
-      });
-    };
+    var token = jwt.sign(user, config.secret, {
+      expiresInMinutes: 1440 //24hr expiration
+    });
+
+    return res.json({
+      user: user,
+      token: token
+    });
   });
 };
 //delete a user by ID
 UserController.prototype.deleteUser = function(req, res) {
   User.remove({
-    _id: req.params.id
+    _id: req.decoded._doc._id
   }, function(err, user) {
     if (err) {
       return res.json(err);
@@ -179,15 +174,35 @@ UserController.prototype.logout = function(req, res) {
       });
     }
   });
-}
+};
+
+UserController.prototype.getUserFromToken = function(req, res, next) {
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if (err) {
+        next();
+      } else {
+        //if all checks are passed, save decoded info to request
+        req.user = decoded;
+        next();
+      }
+    });
+  } else {
+    next();
+  }
+};
 //find documents by user
 UserController.prototype.findUserDocuments = function(req, res) {
+  console.log("req", req);
   Document.find({
-    ownerId: req.params.id
+    ownerId: req.params.userId
   }).exec(function(err, docs) {
     if (err) {
       return res.json(err);
     }
+    console.log("docs", docs);
     return res.json(docs);
   });
 };

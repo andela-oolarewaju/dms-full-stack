@@ -36,7 +36,6 @@ angular.module("mainApp")
       decodeUser: function() {
         if (localStorage.getItem("userToken")) {
           var token = localStorage.getItem("userToken");
-
           var user = {};
           if (token) {
             var encoded = token.split(".")[1];
@@ -45,23 +44,23 @@ angular.module("mainApp")
           }
         }
       },
-      deleteUser: function(id) {
+      deleteUser: function() {
         var token = localStorage.getItem("userToken");
-        return $http.delete("/api/user/" + id + "?token=" + token);
+        return $http.delete("/api/useroflife/?token=" + token);
       },
 
-      updateUser: function(userObj, id) {
+      updateUser: function(userObj) {
         var token = localStorage.getItem("userToken");
-        return $http.put("/api/user/" + id + "?token=" + token, userObj);
+        return $http.put("/api/useroflife/?token=" + token, userObj);
       },
 
-      getUserDocuments: function(id) {
-        return $http.get("/api/user/" + id + "/documents");
+      getUserDocuments: function(userId) {
+        return $http.get("/api/user/" + userId + "/documents");
       },
 
-      getCurrentUser: function(id) {
+      getCurrentUser: function() {
         var token = localStorage.getItem("userToken");
-        return $http.get("/api/user/" + id + "?token=" + token);
+        return $http.get("/api/useroflife/?token=" + token);
       }
     };
 

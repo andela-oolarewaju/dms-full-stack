@@ -39,7 +39,7 @@ angular.module("mainApp", ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate',
         controller: 'docCtrl'
       })
       .state('nav.userprofile', {
-        url: '/user/:id',
+        url: '/user',
         templateUrl: '../app/views/userprofile.html',
         controller: 'userCtrl'
       });
