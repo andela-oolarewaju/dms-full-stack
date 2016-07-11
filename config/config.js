@@ -1,4 +1,4 @@
 module.exports = {
-  'secret': 'somesecretstuff1.,,',
-  'database': 'mongodb://localhost/dms-api-routing'
+  'secret': process.env.SECRET,
+  'database': process.env.DB
 };
