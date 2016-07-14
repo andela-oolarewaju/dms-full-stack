@@ -5,7 +5,6 @@ angular.module("mainApp")
     $scope.getDocuments = function() {
       UserService.decodeUser();
       UserService.getUserDocuments().then(function(docs) {
-        console.log("dokiye", docs);
         $scope.userDocs = docs.data;
       });
     };

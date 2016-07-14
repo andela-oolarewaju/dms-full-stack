@@ -203,7 +203,6 @@ UserController.prototype.findUserDocuments = function(req, res) {
     if (err) {
       return res.json(err);
     }
-    console.log("docs", docs);
     return res.json(docs);
   });
 };
