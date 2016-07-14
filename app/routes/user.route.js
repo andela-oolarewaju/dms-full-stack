@@ -24,7 +24,7 @@ module.exports = function(app) {
     .put(user.verifyToken, user.updateUser)
     .delete(user.verifyToken, user.deleteUser);
 
-  router.route('/user/:userId/documents')
+  router.route('/user/documents')
     .get(user.getUserFromToken, user.findUserDocuments)
 
   app.use('/api', router);

@@ -4,7 +4,7 @@ angular.module("mainApp")
     //function to get all documents
     $scope.getDocuments = function() {
       UserService.decodeUser();
-      UserService.getUserDocuments($stateParams.userId).then(function(docs) {
+      UserService.getUserDocuments().then(function(docs) {
         console.log("dokiye", docs);
         $scope.userDocs = docs.data;
       });

@@ -116,6 +116,7 @@ UserController.prototype.getUsers = function(req, res) {
 };
 //get current user
 UserController.prototype.getCurrentUser = function(req, res) {
+  console.log("id", req.decoded);
   var id = req.decoded._doc._id;
   User.findById(id, function(err, user){
     if (err) {
@@ -195,9 +196,9 @@ UserController.prototype.getUserFromToken = function(req, res, next) {
 };
 //find documents by user
 UserController.prototype.findUserDocuments = function(req, res) {
-  console.log("req", req);
+  var id= req.user._doc._id;
   Document.find({
-    ownerId: req.params.userId
+    ownerId: id
   }).exec(function(err, docs) {
     if (err) {
       return res.json(err);

@@ -54,8 +54,9 @@ angular.module("mainApp")
         return $http.put("/api/useroflife/?token=" + token, userObj);
       },
 
-      getUserDocuments: function(userId) {
-        return $http.get("/api/user/" + userId + "/documents");
+      getUserDocuments: function() {
+        var token = localStorage.getItem("userToken");
+        return $http.get("/api/user/documents/?token=" + token);
       },
 
       getCurrentUser: function() {
