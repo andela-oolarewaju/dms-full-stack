@@ -50,7 +50,7 @@ describe("Services", function() {
 
     it("should delete a user", function(done) {
       var token = localStorage.getItem("userToken");
-      httpMock.expectDELETE('/api/user/10?token=' + token).respond({
+      httpMock.expectDELETE('/api/useroflife/?token=' + token).respond({
         message: "user has been deleted"
       });
       UserService.deleteUser(10).then(function(res) {
@@ -66,7 +66,7 @@ describe("Services", function() {
     it("should update a user", function(done) {
       var token = localStorage.getItem("userToken");
       var updatedUser = null;
-      httpMock.expectPUT('/api/user/2?token=' + token).respond({
+      httpMock.expectPUT('/api/useroflife/?token=' + token).respond({
         updatedUser: {
           username: "choji",
           name: {
@@ -97,7 +97,7 @@ describe("Services", function() {
 
     it("should get a user", function(done) {
       var token = localStorage.getItem("userToken");
-      httpMock.expectGET('/api/user/2?token=' + token).respond({
+      httpMock.expectGET('/api/useroflife/?token=' + token).respond({
         user: {
           username: "choji",
           name: {
@@ -144,7 +144,8 @@ describe("Services", function() {
 
 
     it("should get a users documents", function(done) {
-      httpMock.expectGET('/api/user/2/documents').respond({
+      var token = localStorage.getItem("userToken");
+      httpMock.expectGET('/api/user/documents/?token=' + token).respond({
         message: "user documents found"
       });
       UserService.getUserDocuments(2).then(function(res) {

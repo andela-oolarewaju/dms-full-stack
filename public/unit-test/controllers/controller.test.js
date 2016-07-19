@@ -73,15 +73,15 @@ describe("Document Manager System ", function() {
         username: "naruto",
         password: "naruto"
       };
-      httpMock.expectGET("/api/user/" + userData._id + "?token=" + token).respond([{
+      httpMock.expectGET("/api/useroflife/?token=" + token).respond([{
         _id: 2,
         username: "naruto",
         password: "naruto"
       }]);
-      scope.getUser(userData._id);
+      scope.getUser();
       expect(scope.user).toBeUndefined();
       httpMock.flush();
-      expect(scope.user.username).toBe("naruto");
+      expect(scope.user[0].username).toBe("naruto");
       expect(scope.userCount).toEqual(1);
     });
 
@@ -93,14 +93,14 @@ describe("Document Manager System ", function() {
         password: "naruto"
       };
       var newData = {};
-      httpMock.expectPUT("/api/user/" + userData._id + "?token=" + token).respond({
+      httpMock.expectPUT("/api/useroflife/?token=" + token).respond({
         newData: {
           _id: 2,
           username: "sakura",
           password: "naruto"
         }
       });
-      scope.updateProfile(newData, userData._id);
+      scope.updateProfile(newData);
       expect(scope.updatedUser).toBeUndefined();
       httpMock.flush();
       expect(scope.updatedUser).toBeDefined();
@@ -119,7 +119,7 @@ describe("Document Manager System ", function() {
         email: "naruto@gmail.com",
         password: "naruto"
       };
-      httpMock.expectDELETE("/api/user/" + userData._id + "?token=" + token).respond({
+      httpMock.expectDELETE("/api/useroflife/?token=" + token).respond({
         message: "user deleted"
       });
       scope.deleteAccount(userData._id);

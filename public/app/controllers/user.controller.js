@@ -20,13 +20,11 @@ angular.module("mainApp")
     $scope.updateProfile = function(newDetails) {
       $scope.userUpdated = false;
       UserService.updateUser(newDetails).then(function(data) {
-        console.log("data", data)
         if (data) {
           $scope.updatedUser = data;
           $scope.userUpdated = true;
           $location.url("/nav/userdocuments");
         } else {
-          console.log("error");
           $scope.userUpdated = false;
         }
       });
